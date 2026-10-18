@@ -1,13 +1,130 @@
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>week4-todo</title>
+    <meta
+      name="description"
+      content="Taskly — a simple, interactive to-do list app."
+    />
+    <title>Taskly | My Tasks</title>
   </head>
-  <body>
-    <div id="app"></div>
+
+  <body class="bg-slate-50 text-slate-800 antialiased">
+    <main class="mx-auto max-w-2xl px-4 py-8 sm:py-14">
+      <header class="mb-8">
+        <p class="mb-2 text-sm font-semibold uppercase tracking-widest text-indigo-600">
+          YOUR PERSONAL WORKSPACE
+        </p>
+
+        <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+          Taskly<span class="text-indigo-600">.</span>
+        </h1>
+
+        <p class="mt-2 text-slate-500">
+          One task at a time. You've got this.
+        </p>
+      </header>
+
+      <section
+        class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6"
+        aria-label="To-do list"
+      >
+        <form id="task-form" class="mb-3 flex flex-col gap-3 sm:flex-row">
+          <label for="task-input" class="sr-only">New task</label>
+
+          <input
+            id="task-input"
+            type="text"
+            maxlength="100"
+            placeholder="What needs to be done?"
+            autocomplete="off"
+            class="min-w-0 flex-1 rounded-xl border border-slate-300 px-4 py-3 placeholder:text-slate-400 focus:border-indigo-500"
+          />
+
+          <button
+            type="submit"
+            class="rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700"
+          >
+            + Add task
+          </button>
+        </form>
+
+        <p
+          id="error"
+          class="mb-4 hidden text-sm text-red-600"
+          role="alert"
+        ></p>
+
+        <div
+          class="mb-5 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Filter tasks"
+        >
+          <button
+            type="button"
+            data-filter="all"
+            aria-pressed="true"
+            class="filter-btn rounded-lg bg-indigo-600 px-4 py-2 text-sm font-medium text-white"
+          >
+            All
+          </button>
+
+          <button
+            type="button"
+            data-filter="active"
+            aria-pressed="false"
+            class="filter-btn rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
+          >
+            Active
+          </button>
+
+          <button
+            type="button"
+            data-filter="completed"
+            aria-pressed="false"
+            class="filter-btn rounded-lg px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-100"
+          >
+            Completed
+          </button>
+        </div>
+
+        <ul
+          id="task-list"
+          class="divide-y divide-slate-100"
+          aria-label="Tasks"
+        ></ul>
+
+        <p
+          id="empty"
+          class="hidden rounded-xl bg-slate-50 px-4 py-10 text-center text-sm text-slate-500"
+        >
+          No tasks here yet. Add one to get started!
+        </p>
+
+        <footer
+          class="mt-5 flex flex-col gap-3 border-t border-slate-100 pt-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p id="count" class="text-sm text-slate-500" aria-live="polite">
+            0 tasks left
+          </p>
+
+          <button
+            id="clear-completed"
+            type="button"
+            class="self-start text-sm font-medium text-slate-500 hover:text-red-600 hover:underline sm:self-auto"
+          >
+            Clear completed
+          </button>
+        </footer>
+      </section>
+
+      <p class="mt-5 text-center text-xs text-slate-400">
+        Tip: Double-click a task to edit it. Your tasks are saved in this browser.
+      </p>
+    </main>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
